@@ -54,3 +54,11 @@ group :development, :test do
 end
 
 gem 'omniauth-facebook'
+
+gem 'sprockets', "< 3.0.0"
+
+gem 'polymer-rails'
+
+gem 'polymer-paper-rails'
+
+gem "haml-rails", "~> 0.9"
