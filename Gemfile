@@ -57,8 +57,10 @@ gem 'omniauth-facebook'
 
 gem 'sprockets', "< 3.0.0"
 
-gem 'polymer-rails'
+gem 'polymer-rails', '>= 1.0.3'
 
-gem 'polymer-paper-rails'
+gem 'polymer-elements-rails', git: "git://github.com/alchapone/polymer-elements-rails.git", branch: 'master'
+
+gem 'polymer-paper-rails', git: "git://github.com/alchapone/polymer-paper-rails.git", branch: 'master'
 
 gem "haml-rails", "~> 0.9"

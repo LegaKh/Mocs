@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/alchapone/polymer-elements-rails.git
+  revision: 479e72968053db31d554a7a208bc2a2119d6a935
+  branch: master
+  specs:
+    polymer-elements-rails (1.0.0.pre.rc.1)
+      polymer-rails (~> 1.0, >= 1.0.3)
+
+GIT
+  remote: git://github.com/alchapone/polymer-paper-rails.git
+  revision: 940824af00b9002ebbcd7243db25d659fdd6b8a8
+  branch: master
+  specs:
+    polymer-paper-rails (1.0.0.pre.rc.3)
+      polymer-rails (~> 1.0, >= 1.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -94,7 +110,7 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    multi_json (1.11.0)
+    multi_json (1.11.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nokogiri (1.6.6.2)
@@ -116,12 +132,11 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.18.2)
-    polymer-paper-rails (0.2.6)
-      polymer-rails (~> 0.2.5)
-    polymer-rails (0.2.8)
+    polymer-rails (1.0.3)
       nokogiri (~> 1.6)
       nokogumbo (~> 1.1)
       rails (>= 3.1.0)
+      sprockets (< 3.0.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -214,8 +229,9 @@ DEPENDENCIES
   jquery-rails
   omniauth-facebook
   pg
-  polymer-paper-rails
-  polymer-rails
+  polymer-elements-rails!
+  polymer-paper-rails!
+  polymer-rails (>= 1.0.3)
   pry
   pry-nav
   pry-rails
