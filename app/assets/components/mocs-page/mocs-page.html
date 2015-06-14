@@ -2,7 +2,26 @@
   <link rel="stylesheet" href="mocs-page.css" />
   <template>
 
-    <h2>Home page</h2>
+    <paper-tabs>
+      <paper-tab>TAB 1</paper-tab>
+      <paper-tab>TAB 2</paper-tab>
+      <paper-tab>TAB 3</paper-tab>
+    </paper-tabs>
+    <iron-ajax
+      auto
+      url="/items"
+      handle-as="json"
+      last-response="{{items}}"></iron-ajax>
+
+    <section class="flex layout horizontal wrap">
+      <template is="dom-repeat" items="{{items}}">
+        <div>
+          <span>{{item.name}}</span><br/>
+          <span>Price: </span><span>{{item.price}}</span>
+          </div><paper-button raised>Add to Cart</paper-button>
+      </template>
+    </section>
+
   </template>
 
   <script src="mocs-page.js"></script>
