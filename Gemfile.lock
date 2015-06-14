@@ -6,14 +6,6 @@ GIT
     polymer-elements-rails (1.0.0.pre.rc.1)
       polymer-rails (~> 1.0, >= 1.0.3)
 
-GIT
-  remote: git://github.com/alchapone/polymer-paper-rails.git
-  revision: 940824af00b9002ebbcd7243db25d659fdd6b8a8
-  branch: master
-  specs:
-    polymer-paper-rails (1.0.0.pre.rc.3)
-      polymer-rails (~> 1.0, >= 1.0.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -230,7 +222,6 @@ DEPENDENCIES
   omniauth-facebook
   pg
   polymer-elements-rails!
-  polymer-paper-rails!
   polymer-rails (>= 1.0.3)
   pry
   pry-nav

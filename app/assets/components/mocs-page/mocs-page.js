@@ -1,3 +1,0 @@
-Polymer('mocs-page', {
-
-});
