@@ -15,10 +15,11 @@
 
     <section class="flex layout horizontal wrap">
       <template is="dom-repeat" items="{{items}}">
-        <div>
+        <paper-material elevation='5' animated>
           <span>{{item.name}}</span><br/>
-          <span>Price: </span><span>{{item.price}}</span>
+          <span>Price: </span><span>{{item.price}}</span><span> $</span>
           </div><paper-button raised>Add to Cart</paper-button>
+        </paper-material>
       </template>
     </section>
 

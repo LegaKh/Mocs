@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show, :create, :update]
 
+  resources :orders, only: [:index, :create, :update]
+
   root 'foods#index'
 end
