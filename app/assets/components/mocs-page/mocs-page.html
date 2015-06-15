@@ -15,13 +15,11 @@
 
     <iron-pages selected="{{selected}}">
       <div>
-        <section class="flex layout horizontal wrap">
+        <section class="flex layout horizontal wrap" on-add-to-cart="addToCart">
           <template is="dom-repeat" items="{{items}}">
-            <paper-material elevation='4' animated>
-              <span>{{item.name}}</span><br/>
-              <span>Price: </span><span>{{item.price}}</span><span> $</span>
-              <paper-button raised on-tap="addToCart">Add to Cart</paper-button>
-            </paper-material>
+
+            <mocs-item _id="{{item.id}}" _name="{{item.name}}" _price="{{item.price}}"></mocs-item>
+
           </template>
         </section>
       </div>

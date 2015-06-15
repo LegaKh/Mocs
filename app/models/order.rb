@@ -13,4 +13,25 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :items
   accepts_nested_attributes_for :items
+
+  include AASM
+
+  aasm create_scopes: false do
+    state :new, initial: true
+    state :finalized
+    state :ordered
+    state :delivered
+
+    event :finalize do
+      transitions from: :new, to: :finalized
+    end
+
+    event :order do
+      transitions from: :finalized, to: :ordered
+    end
+
+    event :deliver do
+      transitions from: :ordered, to: :delivered
+    end
+  end
 end

@@ -1,0 +1,14 @@
+<dom-module id="mocs-item">
+  <link rel="stylesheet" href="mocs-item.css" />
+  <template>
+
+    <paper-material elevation='4' animated>
+      <span>{{_name}}</span><br/>
+      <span>Price: </span><span>{{_price}}</span><span> $</span>
+      <paper-button raised on-tap="addToCart">Add to Cart</paper-button>
+    </paper-material>
+
+  </template>
+
+  <script src="mocs-item.js"></script>
+</dom-module>

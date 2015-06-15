@@ -3,8 +3,14 @@ Polymer
   properties:
     items: Array
     orders: Array
-    selected: 0
+    currentOrder: Object
+    selected:
+      type: Number
+      value: 0
+  ready: ->
+    this.orders = [{id: 1, name: "odin"}, {id: 2, name: "dva"}]
+    this.currentOrder = this.orders[0]
 
-  addToCart: (a,b,c)->
+  addToCart: (e) ->
     debugger
-    console.log('baaam')
+    console.log Polymer.dom(e).localTarget._id
