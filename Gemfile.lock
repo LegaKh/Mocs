@@ -140,6 +140,8 @@ GEM
     pry-remote (0.1.8)
       pry (~> 0.9)
       slop (~> 3.0)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   pry-nav
   pry-rails
   pry-remote
+  pundit
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -62,3 +62,5 @@ gem 'polymer-rails', '>= 1.0.3'
 gem 'polymer-elements-rails', git: "git://github.com/alchapone/polymer-elements-rails.git", branch: 'master'
 
 gem "haml-rails", "~> 0.9"
+
+gem "pundit"
