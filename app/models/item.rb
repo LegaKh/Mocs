@@ -11,4 +11,8 @@
 
 class Item < ActiveRecord::Base
   has_and_belongs_to_many :orders
+
+  def as_json(options)
+    super({except: [:created_at, :updated_at]}.merge(options))
+  end
 end

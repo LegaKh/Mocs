@@ -1,8 +1,8 @@
 Polymer
   is: "mocs-item"
   properties:
-    _id: Number
-    _name: String
-    _price: Number
-  addToCart: ->
-    this.fire('add-to-cart')
+    id: Number
+    name: String
+    price: Number
+  addToOrder: ->
+    this.fire('add-to-order', {item: {id: +this.id, name: this.name, price: this.price}})

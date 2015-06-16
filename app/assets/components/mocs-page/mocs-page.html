@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="mocs-page.css" />
   <template>
 
-    <paper-tabs selected="{{selected}}">
+    <paper-tabs selected="{{selectedTab}}">
       <paper-tab>Items</paper-tab>
       <paper-tab>Orders</paper-tab>
     </paper-tabs>
@@ -11,21 +11,41 @@
       auto
       url="/items"
       handle-as="json"
-      last-response="{{items}}"></iron-ajax>
+      last-response="{{ items }}"></iron-ajax>
+    <iron-ajax
+      auto
+      url="/orders"
+      handle-as="json"
+      content-type='application/json'
+      last-response="{{ orders }}"
+      on-response="setCurrentOrder"></iron-ajax>
+    <iron-ajax
+      id='saveOrder'
+      handle-as="json"
+      content-type='application/json'
+      on-response="handleOrder"></iron-ajax>
 
-    <iron-pages selected="{{selected}}">
+    <iron-pages selected="{{ selectedTab }}">
       <div>
-        <section class="flex layout horizontal wrap" on-add-to-cart="addToCart">
-          <template is="dom-repeat" items="{{items}}">
+        <section class="flex layout horizontal wrap" on-add-to-order="addToOrder">
+          <template is="dom-repeat" items="{{ items }}">
 
-            <mocs-item _id="{{item.id}}" _name="{{item.name}}" _price="{{item.price}}"></mocs-item>
+            <mocs-item id="{{ item.id }}" name="{{ item.name }}" price="{{ item.price }}"></mocs-item>
 
           </template>
         </section>
       </div>
 
       <div>
-        <span>page2</span>
+
+<!--         <section class="flex layout horizontal wrap">
+          <template is="dom-repeat" items="{{orders}}">
+
+            <mocs-order _id="{{order.id}}" item_name="{{item.name}}" _price="{{item.price}}"></mocs-item>
+
+          </template>
+        </section> -->
+
       </div>
 
     </iron-pages>
