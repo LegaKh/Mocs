@@ -21,8 +21,8 @@ class OrdersController < ApplicationController
   end
 
   def update_state
-    @order.public_send(params[:action])
-    head :ok
+    @order.public_send(params[:state])
+    render json: @order
   end
 
   private

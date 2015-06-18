@@ -8,7 +8,6 @@ Polymer
       type: Number
       value: 0
 
-
   csrfToken: do ->
     token = document.querySelector('meta[name="csrf-token"]')
     if token then token.getAttribute('content') else ''
@@ -30,7 +29,7 @@ Polymer
 
   sendOrder: ->
     req         = @$.saveOrder
-    req.url     = "/orders/" + (@currentOrder.id or '')
+    req.url     = "/orders/#{@currentOrder.id or ''}"
     req.method  = if @currentOrder.id then 'PATCH' else 'POST'
     req.body    = JSON.stringify {items_ids: @orderItemsIds()}
     req.headers = {"X-CSRF-Token": @csrfToken}
@@ -39,12 +38,23 @@ Polymer
   orderItemsIds: ->
     @currentOrder.items.map (i)-> i.id
 
+  handleUpdatedOrder: (e, response)->
+    @currentOrder = response.response
+    @handleOrder(e, response)
+
   handleOrder: (e, response)->
     @replaceOrder(response.response)
     @$.ordersList.render()
+    @$.toast.show()
 
   replaceOrder: (order)->
     @orders.forEach ((o)->
       if o.id is null or o.id is order.id
         @splice('orders',(@orders.indexOf o), 1, order)).bind @
-    @currentOrder = order
+
+  changeOrderState: (e, detail)->
+    req         = @$.changeOrderState
+    req.url     = "/orders/#{@currentOrder.id}/update_state"
+    req.body    = JSON.stringify detail
+    req.headers = {"X-CSRF-Token": @csrfToken}
+    req.generateRequest()

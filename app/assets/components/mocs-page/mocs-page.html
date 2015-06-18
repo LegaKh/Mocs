@@ -19,26 +19,34 @@
     <iron-ajax
       id='saveOrder'
       content-type='application/json'
+      on-response="handleUpdatedOrder"></iron-ajax>
+    <iron-ajax
+      id='changeOrderState'
+      content-type='application/json'
+      method='PATCH'
       on-response="handleOrder"></iron-ajax>
 
     <iron-pages selected="{{selectedTab}}">
       <div>
-        <section class="flex layout horizontal wrap" on-add-to-order="addToOrder">
-          <template is="dom-repeat" items="{{items}}">
-            <mocs-item _id="{{item.id}}" _name="{{item.name}}" _price="{{item.price}}"></mocs-item>
-          </template>
-        </section>
+        <section class="layout horizontal">
 
-        <section class="flex layout horizontal wrap" on-add-to-order="addToOrder">
-          <span>Order</span>
-          <mocs-order _id="{{currentOrder.id}}" _items="{{currentOrder.items}}" _aasm_state="{{currentOrder.aasm_state}}">
-          </mocs-order>
-        </section>
+          <section class="layout horizontal" style="width:20%">
+            <span>Order</span>
+            <mocs-order _id="{{currentOrder.id}}" _items="{{currentOrder.items}}" _aasm_state="{{currentOrder.aasm_state}}">
+            </mocs-order>
+          </section>
 
+          <section class="flex layout horizontal wrap" on-add-to-order="addToOrder">
+            <template is="dom-repeat" items="{{items}}">
+              <mocs-item _id="{{item.id}}" _name="{{item.name}}" _price="{{item.price}}"></mocs-item>
+            </template>
+          </section>
+
+        </section>
       </div>
 
       <div>
-        <section class="flex layout horizontal wrap">
+        <section class="flex layout horizontal wrap" on-change-state="changeOrderState">
           <template id="ordersList" is="dom-repeat" items="{{orders}}" as="order">
 
             <mocs-order _id="{{order.id}}" _items="{{order.items}}" _aasm_state="{{order.aasm_state}}"></mocs-item>
@@ -48,7 +56,7 @@
       </div>
 
     </iron-pages>
-
+    <paper-toast id="toast" text="Saved"></paper-toast>
   </template>
 
   <script src="mocs-page.js"></script>
