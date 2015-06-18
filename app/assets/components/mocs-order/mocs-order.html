@@ -1,0 +1,20 @@
+<dom-module id="mocs-order">
+  <link rel="stylesheet" href="mocs-order.css" />
+  <template>
+    <paper-material elevation='4' animated>
+      <section class="flex layout vertical wrap">
+        <div><span>Order #</span><span>{{_id}}</span></div>
+        <div><span>Status: </span><span>{{_aasm_state}}</span></div>
+      </section>
+
+      <template is="dom-repeat" items="{{_items}}">
+        <paper-material elevation='4' animated>
+          <span>{{item.name}}</span><br/>
+          <span>Price: </span><span>{{item.price}}</span><span> $</span>
+        </paper-material>
+      </template>
+    </paper-material>
+  </template>
+
+  <script src="mocs-order.js"></script>
+</dom-module>

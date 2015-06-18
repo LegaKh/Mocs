@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :create, :update]
 
-  resources :orders, only: [:index, :create, :update]
+  resources :orders, only: [:index, :create, :update] do
+    patch :update_state, on: :member
+  end
 
   root 'foods#index'
 end

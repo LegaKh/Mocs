@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+paper-material {
+  margin: 15px;
+  padding: 10px;
+}

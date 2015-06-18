@@ -33,4 +33,9 @@ class Order < ActiveRecord::Base
       transitions from: :ordered, to: :delivered
     end
   end
+
+  def as_json(options)
+    super(options.merge(include: { items: {
+                                   except: [:created_at, :updated_at]} }))
+  end
 end
