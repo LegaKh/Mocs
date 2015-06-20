@@ -21,6 +21,7 @@ tmp
 config/database.yml
 public/system/
 public/uploads
+public/assets
 
 # Ignore ctags and etags files
 .gemtags
