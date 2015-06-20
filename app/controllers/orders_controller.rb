@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:update, :update_state]
+  before_action :authorize, only: [:create, :update, :update_state]
 
   def index
-    render json: current_user.orders.order('created_at DESC').includes(:items)
+    render json: current_user ? current_user.orders.order('created_at DESC').includes(:items) : []
   end
 
   def create

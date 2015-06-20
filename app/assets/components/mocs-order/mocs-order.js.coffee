@@ -1,9 +1,9 @@
 Polymer
   is: 'mocs-order'
   properties:
-    _id: Number
-    _items: Array
-    _aasm_state: String
+    id: Number
+    items: Array
+    aasm_state: String
 
   computeAction: (state)->
     switch state
@@ -11,10 +11,10 @@ Polymer
       when 'finalized' then 'order'
       when 'ordered'   then 'deliver'
 
-  performAction: ->
-    return unless @_id
-    action = @computeAction(@_aasm_state)
-    this.fire('change-state', {id: @_id, state: action + '!'}) if action
+  performAction: (e,v,d)->
+    return unless @id
+    action = @computeAction(@aasm_state)
+    this.fire('change-state', {id: @id, state: action + '!'}) if action
 
   copmuteButton: (state)->
     state isnt 'delivered'

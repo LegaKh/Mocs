@@ -19,7 +19,8 @@
     <iron-ajax
       id='saveOrder'
       content-type='application/json'
-      on-response="handleUpdatedOrder"></iron-ajax>
+      on-response="handleUpdatedOrder"
+      on-error="handleError"></iron-ajax>
     <iron-ajax
       id='changeOrderState'
       content-type='application/json'
@@ -32,7 +33,7 @@
           <section class="layout vertical wrap" on-change-state="changeOrderState">
             <paper-button raised on-tap="createNewOrder">Create new order</paper-button>
             <span>Order</span>
-            <mocs-order _id="{{currentOrder.id}}" _items="{{currentOrder.items}}" _aasm_state="{{currentOrder.aasm_state}}">
+            <mocs-order id="{{currentOrder.id}}" items="{{currentOrder.items}}" aasm_state="{{currentOrder.aasm_state}}">
             </mocs-order>
           </section>
 
@@ -54,7 +55,7 @@
           </paper-menu>
           <section class="flex layout horizontal wrap" on-change-state="changeOrderState">
             <template id="ordersList" is="dom-repeat" items="{{filteredOrders}}" as="order">
-              <mocs-order _id="{{order.id}}" _items="{{order.items}}" _aasm_state="{{order.aasm_state}}"></mocs-order>
+              <mocs-order id="{{order.id}}" items="{{order.items}}" aasm_state="{{order.aasm_state}}"></mocs-order>
             </template>
           </section>
         </section>
@@ -62,6 +63,8 @@
 
     </iron-pages>
     <paper-toast id="toast_saved" text="Saved"></paper-toast>
+    <paper-toast id="toast_log_in" text="Please Sign In"></paper-toast>
+    <paper-toast id="toast_already_created" text="New order is already created"></paper-toast>
   </template>
 
   <script src="mocs-page.js"></script>

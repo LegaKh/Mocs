@@ -3,11 +3,11 @@
   <template>
     <paper-material elevation='4' animated>
       <section class="flex layout vertical wrap">
-        <div><span>Order #</span><span>{{_id}}</span></div>
-        <div><span>State: </span><span>{{_aasm_state}}</span></div>
+        <div><span>Order #</span><span>{{id}}</span></div>
+        <div><span>State: </span><span>{{aasm_state}}</span></div>
       </section>
 
-      <template is="dom-repeat" items="{{_items}}">
+      <template is="dom-repeat" items="{{items}}">
         <paper-material elevation='4' animated>
           <span>{{item.name}}</span><br/>
           <span>Price: </span><span>{{item.price}}</span><span> $</span>
@@ -16,7 +16,7 @@
 
       <template is="dom-if" if="{{copmuteButton(_aasm_state)}}">
         <paper-button raised class="flex layout vertical" on-tap="performAction">
-          <span>{{computeAction(_aasm_state)}}</span>
+          <span>{{computeAction(aasm_state)}}</span>
         </paper-button>
       </template>
 

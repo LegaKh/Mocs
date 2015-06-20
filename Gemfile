@@ -63,6 +63,4 @@ gem 'polymer-elements-rails', git: "git://github.com/alchapone/polymer-elements-
 
 gem "haml-rails", "~> 0.9"
 
-gem "pundit"
-
 gem "aasm"

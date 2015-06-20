@@ -25,6 +25,8 @@ Polymer
     if @currentOrder?.id isnt null
       @orders.unshift {id: null, items: [], aasm_state: 'new'}
       @currentOrder = @orders[0]
+    else
+      @$.toast_already_created.show()
 
   addToOrder: (e) ->
     return if @currentOrder.aasm_state isnt 'new'
@@ -71,3 +73,6 @@ Polymer
       order for order in @orders when order.aasm_state is 'new'
     else
       order for order in @orders when order.aasm_state isnt 'new'
+
+  handleError: ->
+    @$.toast_log_in.show()
