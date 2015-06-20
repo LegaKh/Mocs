@@ -12,4 +12,9 @@ Polymer
       when 'ordered'   then 'deliver'
 
   performAction: ->
-    this.fire('change-state', {state: @computeAction(@_aasm_state) + '!'})
+    return unless @_id
+    action = @computeAction(@_aasm_state)
+    this.fire('change-state', {id: @_id, state: action + '!'}) if action
+
+  copmuteButton: (state)->
+    state isnt 'delivered'

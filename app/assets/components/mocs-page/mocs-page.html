@@ -29,8 +29,8 @@
     <iron-pages selected="{{selectedTab}}">
       <div>
         <section class="layout horizontal">
-
-          <section class="layout horizontal" style="width:20%">
+          <section class="layout vertical" style="width:20%" on-change-state="changeOrderState">
+            <paper-button raised on-tap="createNewOrder">Create new order</paper-button>
             <span>Order</span>
             <mocs-order _id="{{currentOrder.id}}" _items="{{currentOrder.items}}" _aasm_state="{{currentOrder.aasm_state}}">
             </mocs-order>
@@ -47,7 +47,7 @@
 
       <div>
         <section class="flex layout horizontal wrap" on-change-state="changeOrderState">
-          <template id="ordersList" is="dom-repeat" items="{{orders}}" as="order">
+          <template id="ordersList" is="dom-repeat" items="{{filter(orders)}}" as="order">
 
             <mocs-order _id="{{order.id}}" _items="{{order.items}}" _aasm_state="{{order.aasm_state}}"></mocs-item>
 
@@ -56,7 +56,7 @@
       </div>
 
     </iron-pages>
-    <paper-toast id="toast" text="Saved"></paper-toast>
+    <paper-toast id="toast_saved" text="Saved"></paper-toast>
   </template>
 
   <script src="mocs-page.js"></script>

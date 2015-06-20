@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:update, :update_state]
 
   def index
-    render json: current_user.orders
+    render json: current_user.orders.order('created_at DESC').includes(:items)
   end
 
   def create

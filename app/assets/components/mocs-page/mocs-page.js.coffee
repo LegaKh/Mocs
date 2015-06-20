@@ -7,6 +7,9 @@ Polymer
     selectedTab:
       type: Number
       value: 0
+    filterState:
+      type: String
+      value: 'new'
 
   csrfToken: do ->
     token = document.querySelector('meta[name="csrf-token"]')
@@ -16,8 +19,9 @@ Polymer
     @currentOrder = @orders[0] or @createNewOrder()
 
   createNewOrder: ->
-    @orders.unshift {id: null, items: [], aasm_state: 'new'}
-    @setCurrentOrder()
+    if @currentOrder.id isnt null
+      @orders.unshift {id: null, items: [], aasm_state: 'new'}
+      @setCurrentOrder()
 
   addToOrder: (e) ->
     return if @currentOrder.aasm_state isnt 'new'
@@ -45,16 +49,17 @@ Polymer
   handleOrder: (e, response)->
     @replaceOrder(response.response)
     @$.ordersList.render()
-    @$.toast.show()
+    @$.toast_saved.show()
 
   replaceOrder: (order)->
-    @orders.forEach ((o)->
-      if o.id is null or o.id is order.id
-        @splice('orders',(@orders.indexOf o), 1, order)).bind @
+    @splice('orders',(@orders.indexOf o), 1, order) for o in @orders when o.id is null or o.id is order.id
 
   changeOrderState: (e, detail)->
     req         = @$.changeOrderState
-    req.url     = "/orders/#{@currentOrder.id}/update_state"
+    req.url     = "/orders/#{detail.id}/update_state"
     req.body    = JSON.stringify detail
     req.headers = {"X-CSRF-Token": @csrfToken}
     req.generateRequest()
+
+  filter: (orders)->
+    order for order in orders when order.aasm_state is @filterState
