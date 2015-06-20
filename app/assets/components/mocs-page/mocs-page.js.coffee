@@ -29,7 +29,7 @@ Polymer
       @$.toast_already_created.show()
 
   addToOrder: (e) ->
-    return if @currentOrder.aasm_state isnt 'new'
+    return @$.toast_add_new_order.show() if @currentOrder.aasm_state isnt 'new'
     item_id = @orderItemsIds().filter (i)->
       i is e.detail.item.id
     if item_id.length is 0

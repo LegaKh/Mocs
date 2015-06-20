@@ -11,7 +11,7 @@ Polymer
       when 'finalized' then 'order'
       when 'ordered'   then 'deliver'
 
-  performAction: (e,v,d)->
+  performAction: ->
     return unless @id
     action = @computeAction(@aasm_state)
     this.fire('change-state', {id: @id, state: action + '!'}) if action
