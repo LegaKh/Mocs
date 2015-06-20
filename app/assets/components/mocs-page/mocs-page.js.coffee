@@ -3,25 +3,28 @@ Polymer
   properties:
     items: Array
     orders: Array
+    filteredOrders: Array
     currentOrder: Object
     selectedTab:
       type: Number
       value: 0
     filterState:
-      type: String
-      value: 'new'
+      type: Number
+      value: 0
+      observer: 'applyFilter'
 
   csrfToken: do ->
     token = document.querySelector('meta[name="csrf-token"]')
     if token then token.getAttribute('content') else ''
 
   setCurrentOrder: ->
+    @filteredOrders = @orders
     @currentOrder = @orders[0] or @createNewOrder()
 
   createNewOrder: ->
-    if @currentOrder.id isnt null
+    if @currentOrder?.id isnt null
       @orders.unshift {id: null, items: [], aasm_state: 'new'}
-      @setCurrentOrder()
+      @currentOrder = @orders[0]
 
   addToOrder: (e) ->
     return if @currentOrder.aasm_state isnt 'new'
@@ -61,5 +64,10 @@ Polymer
     req.headers = {"X-CSRF-Token": @csrfToken}
     req.generateRequest()
 
-  filter: (orders)->
-    order for order in orders when order.aasm_state is @filterState
+  applyFilter: ->
+    return @filteredOrders = @orders if @filterState is 0
+    @filteredOrders =
+    if @filterState is 1
+      order for order in @orders when order.aasm_state is 'new'
+    else
+      order for order in @orders when order.aasm_state isnt 'new'

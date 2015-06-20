@@ -24,12 +24,12 @@
       id='changeOrderState'
       content-type='application/json'
       method='PATCH'
-      on-response="handleOrder"></iron-ajax>
+      on-response="handleUpdatedOrder"></iron-ajax>
 
     <iron-pages selected="{{selectedTab}}">
       <div>
-        <section class="layout horizontal">
-          <section class="layout vertical" style="width:20%" on-change-state="changeOrderState">
+        <section class="flex layout horizontal wrap">
+          <section class="layout vertical wrap" on-change-state="changeOrderState">
             <paper-button raised on-tap="createNewOrder">Create new order</paper-button>
             <span>Order</span>
             <mocs-order _id="{{currentOrder.id}}" _items="{{currentOrder.items}}" _aasm_state="{{currentOrder.aasm_state}}">
@@ -38,7 +38,7 @@
 
           <section class="flex layout horizontal wrap" on-add-to-order="addToOrder">
             <template is="dom-repeat" items="{{items}}">
-              <mocs-item _id="{{item.id}}" _name="{{item.name}}" _price="{{item.price}}"></mocs-item>
+              <mocs-item id="{{item.id}}" name="{{item.name}}" price="{{item.price}}"></mocs-item>
             </template>
           </section>
 
@@ -46,12 +46,17 @@
       </div>
 
       <div>
-        <section class="flex layout horizontal wrap" on-change-state="changeOrderState">
-          <template id="ordersList" is="dom-repeat" items="{{filter(orders)}}" as="order">
-
-            <mocs-order _id="{{order.id}}" _items="{{order.items}}" _aasm_state="{{order.aasm_state}}"></mocs-item>
-
-          </template>
+        <section class="flex layout horizontal wrap" role="menu">
+          <paper-menu class="list x-scope" selected="{{filterState}}">
+            <paper-item>All</paper-item>
+            <paper-item>Active</paper-item>
+            <paper-item>History</paper-item>
+          </paper-menu>
+          <section class="flex layout horizontal wrap" on-change-state="changeOrderState">
+            <template id="ordersList" is="dom-repeat" items="{{filteredOrders}}" as="order">
+              <mocs-order _id="{{order.id}}" _items="{{order.items}}" _aasm_state="{{order.aasm_state}}"></mocs-order>
+            </template>
+          </section>
         </section>
       </div>
 
