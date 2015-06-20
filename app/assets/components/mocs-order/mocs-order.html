@@ -9,12 +9,12 @@
 
       <template is="dom-repeat" items="{{items}}">
         <paper-material elevation='4' animated>
-          <span>{{item.name}}</span><br/>
-          <span>Price: </span><span>{{item.price}}</span><span> $</span>
+          <span>{{item.name}}</span>
+          <span>{{item.price}}</span><span> $</span>
         </paper-material>
       </template>
 
-      <template is="dom-if" if="{{copmuteButton(_aasm_state)}}">
+      <template is="dom-if" if="{{copmuteButton(aasm_state)}}">
         <paper-button raised class="flex layout vertical" on-tap="performAction">
           <span>{{computeAction(aasm_state)}}</span>
         </paper-button>

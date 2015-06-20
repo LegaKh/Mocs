@@ -2,12 +2,13 @@
   display: block;
 }
 
-
 paper-material {
   padding: 20px;
-  margin: 20px;
+  margin: 2px;
+  background-color: #FFEB3B;
 }
 
 paper-button {
   margin-top: 10px;
+  background-color: #B3E5FC;
 }

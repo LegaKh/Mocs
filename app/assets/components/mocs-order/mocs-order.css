@@ -1,8 +1,16 @@
 :host {
   display: block;
+  margin-top: 4px;
 }
 
 paper-material {
-  margin: 15px;
+  margin: 1px;
   padding: 10px;
+  background-color: #03A9F4;
+  color: #212121;
+}
+
+paper-button {
+  margin-top: 10px;
+  background-color: #B3E5FC;
 }

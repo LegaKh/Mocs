@@ -31,8 +31,8 @@
       <div>
         <section class="flex layout horizontal wrap">
           <section class="layout vertical wrap" on-change-state="changeOrderState">
-            <paper-button raised on-tap="createNewOrder">Create new order</paper-button>
-            <span>Order</span>
+            <paper-button class="add-new" raised on-tap="createNewOrder">Create new order</paper-button>
+            <span>Current Order:</span>
             <mocs-order id="{{currentOrder.id}}" items="{{currentOrder.items}}" aasm_state="{{currentOrder.aasm_state}}">
             </mocs-order>
           </section>
