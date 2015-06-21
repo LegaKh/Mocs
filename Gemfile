@@ -52,7 +52,11 @@ group :development, :test do
   gem 'pry-nav'
 
   gem 'pry-remote'
+
+  gem 'rspec-rails', '~> 3.0'
 end
+
+
 
 gem 'omniauth-facebook'
 

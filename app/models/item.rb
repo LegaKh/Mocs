@@ -10,6 +10,9 @@
 #
 
 class Item < ActiveRecord::Base
+  validates :name, presence: true, length: { in: 2..20 }
+  validates :price, numericality: { greater_than: 0, less_than: 10000 }
+
   has_and_belongs_to_many :orders
 
   def as_json(options)

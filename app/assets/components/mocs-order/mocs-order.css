@@ -14,3 +14,7 @@ paper-button {
   margin-top: 10px;
   background-color: #B3E5FC;
 }
+
+.price {
+  float: right;
+}
