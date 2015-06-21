@@ -35,6 +35,8 @@ Polymer
     if item_id.length is 0
       @currentOrder.items.push e.detail.item
       @sendOrder()
+    else
+      @$.toast_already_in_cart.show()
 
   sendOrder: ->
     req         = @$.saveOrder
@@ -53,6 +55,7 @@ Polymer
 
   handleOrder: (e, response)->
     @replaceOrder(response.response)
+    @filteredOrders = @orders
     @$.ordersList.render()
     @$.toast_saved.show()
 
