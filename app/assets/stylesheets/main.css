@@ -1,8 +1,9 @@
 html {
     margin:    0 auto;
-    max-width: 1165px;
+    max-width: 1200px;
 }
 
 body {
+    font-family: sans-serif;
     background-color: #009688;
 }
